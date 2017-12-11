@@ -181,6 +181,8 @@ pipeline {
         wrap([$class: 'TimestamperBuildWrapper']) {
           dir('./vysionics_bsp/vector_incremental_build') {
             echo 'Call ./installer.sh'  
+            sh './installer.sh'
+            sh 'installer/x86_64/vector_update_x86_64.run	-a 192.168.1.201'
             archiveArtifacts artifacts: 'images/*bzImage'
             archiveArtifacts artifacts: 'images/*rootfs.cpio.xz'
 
